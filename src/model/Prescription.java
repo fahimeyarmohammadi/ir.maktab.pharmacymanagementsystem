@@ -5,5 +5,5 @@ import java.util.List;
 public class Prescription {
     private int id;
     private int userId;
-    private List<>medicineList;
+    private List<Medicine>medicineList;
 }
