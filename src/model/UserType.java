@@ -1,2 +1,6 @@
-package model;public enum UserType {
+package model;
+
+public enum UserType {
+    PATIENT,
+    ADMIN
 }
