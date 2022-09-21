@@ -7,6 +7,15 @@ public class Medicine {
 
     private boolean isExist;
 
+    public Medicine(String name, double price) {
+        this.name=name;
+        this.price=price;
+    }
+
+    public Medicine(String name) {
+        this.name=name;
+    }
+
     public boolean isExist() {
         return isExist;
     }
