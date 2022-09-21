@@ -22,8 +22,8 @@ public class Prescription {
         return isConfirmed;
     }
 
-    public void setConfirmed(boolean isconfired) {
-        this.isConfirmed = isconfired;
+    public void setConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
     }
 
     public int getId() {
