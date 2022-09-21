@@ -122,4 +122,16 @@ public List<Medicine> getExistMedicine(int id) throws SQLException {
     }
         return medicineList;
 }
+public double getPriceOfMedicine(String name) throws SQLException {
+    Connection connection=GetConnection.getConnection();
+    PreparedStatement preparedStatement=connection.prepareStatement("select price from medicine_tbl" +
+            " where name=?");
+    preparedStatement.setString(1,name);
+    ResultSet resultSet=preparedStatement.executeQuery();
+    double price=0;
+    while(resultSet.next()){
+        price=resultSet.getDouble(1);
+    }
+    return price;
+}
 }
