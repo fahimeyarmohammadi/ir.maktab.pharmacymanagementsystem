@@ -5,6 +5,16 @@ public class Medicine {
     private String name;
     private double price;
 
+    private boolean isExist;
+
+    public boolean isExist() {
+        return isExist;
+    }
+
+    public void setExist(boolean exist) {
+        isExist = exist;
+    }
+
     public int getId() {
         return id;
     }

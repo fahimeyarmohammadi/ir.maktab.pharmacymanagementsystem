@@ -18,7 +18,7 @@ public class UserRepository {
         preparedStatement.executeUpdate();
     }
 
-    public boolean UserSignIn(String username, String password) throws SQLException {
+    public boolean userSignIn(String username, String password) throws SQLException {
         Connection connection = GetConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("select * from User_tbl" +
                 " where username=? , password=?");
@@ -30,6 +30,5 @@ public class UserRepository {
             return true;
         else
             return false;
-
     }
 }

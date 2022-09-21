@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Prescription {
     private int id;
-    private int userId;
+    private String userNationalCode;
     private int numberOfMedicine;
     private List<Medicine>medicineList;
 
@@ -34,12 +34,12 @@ public class Prescription {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserNationalCode() {
+        return userNationalCode;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserNationalCode(String userNationalCode) {
+        this.userNationalCode = userNationalCode;
     }
 
     public List<Medicine> getMedicineList() {
