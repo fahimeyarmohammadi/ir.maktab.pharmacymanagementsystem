@@ -11,6 +11,13 @@ public class Prescription {
      private boolean isConfirmed;
      private double totalPrice;
 
+    public Prescription(int id, boolean isConfirmed, int numberOfMedicine, String userNationalCode) {
+        this.id=id;
+        this.isConfirmed=isConfirmed;
+        this.numberOfMedicine=numberOfMedicine;
+        this.userNationalCode=userNationalCode;
+    }
+
     public int getNumberOfMedicine() {
         return numberOfMedicine;
     }
