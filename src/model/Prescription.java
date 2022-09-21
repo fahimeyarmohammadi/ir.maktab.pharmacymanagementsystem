@@ -9,6 +9,7 @@ public class Prescription {
     private List<Medicine>medicineList;
 
      private boolean isConfirmed;
+     private double totalPrice;
 
     public int getNumberOfMedicine() {
         return numberOfMedicine;
@@ -48,6 +49,14 @@ public class Prescription {
 
     public void setMedicineList(List<Medicine> medicineList) {
         this.medicineList = medicineList;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
 
