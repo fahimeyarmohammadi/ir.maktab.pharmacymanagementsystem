@@ -18,12 +18,12 @@ public class UserRepository {
         preparedStatement.executeUpdate();
     }
 
-    public boolean userSignIn(String username, String password) throws SQLException {
+    public boolean userSignIn(User user) throws SQLException {
         Connection connection = GetConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("select * from User_tbl" +
                 " where username=? , password=?");
-        preparedStatement.setString(1, username);
-        preparedStatement.setString(2, password);
+        preparedStatement.setString(1, user.getUserName());
+        preparedStatement.setString(2, user.getNationalCode());
 
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next())

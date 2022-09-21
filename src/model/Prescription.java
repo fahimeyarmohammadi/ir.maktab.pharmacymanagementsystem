@@ -18,6 +18,20 @@ public class Prescription {
         this.userNationalCode=userNationalCode;
     }
 
+    public Prescription(int id, boolean isConfirmed, int numberOfMedicine, String userNationalCode, List<Medicine>medicineList) {
+        this.id=id;
+        this.isConfirmed=isConfirmed;
+        this.numberOfMedicine=numberOfMedicine;
+        this.userNationalCode=userNationalCode;
+        this.medicineList=medicineList;
+    }
+
+    public Prescription(String nationalCode, int numberOfMedicine, List<Medicine> medicineList) {
+        this.userNationalCode=nationalCode;
+        this.numberOfMedicine=numberOfMedicine;
+        this.medicineList=medicineList;
+    }
+
     public int getNumberOfMedicine() {
         return numberOfMedicine;
     }

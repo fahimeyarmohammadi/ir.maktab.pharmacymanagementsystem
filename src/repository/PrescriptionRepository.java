@@ -23,6 +23,18 @@ public void insertPrescription(Prescription prescription) throws SQLException {
 
     preparedStatement.executeUpdate();
 }
+public int getPrescriptionId(String nationalCode) throws SQLException {
+    Connection connection=GetConnection.getConnection();
+    PreparedStatement preparedStatement=connection.prepareStatement("select id from prescription_tbl" +
+            " where user_natinalcode=?");
+    preparedStatement.setString(1,nationalCode);
+    ResultSet resultSet=preparedStatement.executeQuery();
+    int id=0;
+    while(resultSet.next()){
+        id=resultSet.getInt(1);
+    }
+    return id;
+}
 public void insertMedicineToPrescription(int prescriptionId, String medicineName) throws SQLException {
     Connection connection=GetConnection.getConnection();
     PreparedStatement preparedStatement=connection.prepareStatement( "insert into medicinesOfPrescription_tbl" +
@@ -112,6 +124,7 @@ public List<Medicine> getExistMedicine(int id) throws SQLException {
     PreparedStatement preparedStatement=connection.prepareStatement("select name , isExist from medicine_tbl" +
             "inner join medicineOfPrescription_tbl where" +
             " medicineOfPrescription_tbl.prescription_id=?");
+    preparedStatement.setInt(1,id);
     ResultSet resultSet=preparedStatement.executeQuery();
     List<Medicine>medicineList=new ArrayList<>();
     while(resultSet.next()){
