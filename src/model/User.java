@@ -17,7 +17,7 @@ public class User {
         this.userName = userName;
     }
 
-    public String  getNationalCode() {
+    public String getNationalCode() {
         return nationalCode;
     }
 

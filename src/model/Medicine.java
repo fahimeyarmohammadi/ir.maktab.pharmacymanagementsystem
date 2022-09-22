@@ -4,16 +4,15 @@ public class Medicine {
     private int id;
     private String name;
     private double price;
-
     private boolean isExist;
 
     public Medicine(String name, double price) {
-        this.name=name;
-        this.price=price;
+        this.name = name;
+        this.price = price;
     }
 
     public Medicine(String name) {
-        this.name=name;
+        this.name = name;
     }
 
     public boolean isExist() {
@@ -46,5 +45,15 @@ public class Medicine {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Medicine{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", isExist=" + isExist +
+                '}';
     }
 }

@@ -6,30 +6,30 @@ public class Prescription {
     private int id;
     private String userNationalCode;
     private int numberOfMedicine;
-    private List<Medicine>medicineList;
+    private List<Medicine> medicineList;
 
-     private boolean isConfirmed;
-     private double totalPrice;
+    private boolean isConfirmed;
+    private double totalPrice;
 
     public Prescription(int id, boolean isConfirmed, int numberOfMedicine, String userNationalCode) {
-        this.id=id;
-        this.isConfirmed=isConfirmed;
-        this.numberOfMedicine=numberOfMedicine;
-        this.userNationalCode=userNationalCode;
+        this.id = id;
+        this.isConfirmed = isConfirmed;
+        this.numberOfMedicine = numberOfMedicine;
+        this.userNationalCode = userNationalCode;
     }
 
-    public Prescription(int id, boolean isConfirmed, int numberOfMedicine, String userNationalCode, List<Medicine>medicineList) {
-        this.id=id;
-        this.isConfirmed=isConfirmed;
-        this.numberOfMedicine=numberOfMedicine;
-        this.userNationalCode=userNationalCode;
-        this.medicineList=medicineList;
+    public Prescription(int id, boolean isConfirmed, int numberOfMedicine, String userNationalCode, List<Medicine> medicineList) {
+        this.id = id;
+        this.isConfirmed = isConfirmed;
+        this.numberOfMedicine = numberOfMedicine;
+        this.userNationalCode = userNationalCode;
+        this.medicineList = medicineList;
     }
 
     public Prescription(String nationalCode, int numberOfMedicine, List<Medicine> medicineList) {
-        this.userNationalCode=nationalCode;
-        this.numberOfMedicine=numberOfMedicine;
-        this.medicineList=medicineList;
+        this.userNationalCode = nationalCode;
+        this.numberOfMedicine = numberOfMedicine;
+        this.medicineList = medicineList;
     }
 
     public int getNumberOfMedicine() {
@@ -78,6 +78,18 @@ public class Prescription {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "Prescription{" +
+                "id=" + id +
+                ", userNationalCode='" + userNationalCode + '\'' +
+                ", numberOfMedicine=" + numberOfMedicine +
+                ", medicineList=" + medicineList +
+                ", isConfirmed=" + isConfirmed +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }
 

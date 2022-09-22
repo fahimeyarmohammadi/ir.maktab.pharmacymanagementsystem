@@ -41,25 +41,14 @@ public void insertMedicineToPrescription(int prescriptionId, String medicineName
             "(prescription_id , medicineName ) values (?,?)");
     preparedStatement.setInt(1,prescriptionId);
     preparedStatement.setString(2,medicineName);
-
     preparedStatement.executeUpdate();
-
 }
-
-public void getConfirmedPrescription(int id) throws SQLException {
-    Connection connection=GetConnection.getConnection();
-    PreparedStatement preparedStatement=connection.prepareStatement("select * fromprescriotion_tbl inner join medicine_tbl" +
-            "on pre  ");
-
-}
-
 public void deletePrescription(int id) throws SQLException {
     Connection connection=GetConnection.getConnection();
-    PreparedStatement preparedStatement=connection.prepareStatement("delete from prescription_tbl where id=?");
+    PreparedStatement preparedStatement=connection.prepareStatement("delete from prescription_tbl" +
+            " where id=?");
     preparedStatement.setInt(1,id);
-
     preparedStatement.executeUpdate();
-
 }
 public void deleteAllMedicineFromPrescription(int id) throws SQLException {
     Connection connection=GetConnection.getConnection();
@@ -147,4 +136,43 @@ public double getPriceOfMedicine(String name) throws SQLException {
     }
     return price;
 }
+
+public void updatePrescription(int id,int numberOfMedicine ) throws SQLException {
+    Connection connection=GetConnection.getConnection();
+    PreparedStatement preparedStatement=connection.prepareStatement("update prescription_tbl" +
+            " set numberOfMrdicine =? where id=?");
+    preparedStatement.setInt(1,id);
+    preparedStatement.setInt(2,numberOfMedicine);
+    preparedStatement.executeUpdate();
+
+}
+
+public int getNumberOfMedicine(int id) throws SQLException {
+    Connection connection= GetConnection.getConnection();
+    PreparedStatement preparedStatement=connection.prepareStatement("select numberOfMedicine from " +
+            " prescription_tbl where id=?");
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            int numberOfMedicine=0;
+            while (resultSet.next()){
+                numberOfMedicine=resultSet.getInt(1);
+            }
+            return numberOfMedicine;
+}
+
+    public double getTotalPriceOfPrescription(int id) throws SQLException {
+        Connection connection= GetConnection.getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement("select count(price) from medicine_tbl" +
+                " inner join medicinesOfPrescription_tbl on medicine_tbl.name=medicinesOfPrescription_tbl.medicineName" +
+                " inner join prescription_tbl on medicinesOfPrescription_tbl.prescription_id=prescription_tbl.id where" +
+                " isconfirmed=? and prescription_tbl.id=?");
+        preparedStatement.setBoolean(1,true);
+        preparedStatement.setInt(2,id);
+        ResultSet resultSet=preparedStatement.executeQuery();
+        double totalPrice=0;
+        while(resultSet.next()){
+            totalPrice=resultSet.getDouble(1);
+        }
+        return totalPrice;
+    }
 }

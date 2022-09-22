@@ -42,7 +42,6 @@ public class AdminService {
 
         for (int i = 0; i < prescriptionList.size(); i++) {
             List<Medicine> medicineList = new ArrayList<>();
-            List<Prescription> resultPrescription = new ArrayList<>();
             int prescriptionId = prescriptionRepository.getPrescriptionId(prescriptionList.get(i).getUserNationalCode());
             if (!prescriptionList.get(i).isConfirmed()) {
                 prescriptionRepository.confirmPrescription(prescriptionId);
@@ -53,10 +52,21 @@ public class AdminService {
                     Medicine medicine = new Medicine(medicineList.get(j).getName(), price);
                     resultMedicine.add(medicine);
                 }
-                Prescription prescription = new Prescription(prescriptionId,
-                        prescriptionList.get(i).isConfirmed()
-                        , prescriptionList.get(i).getNumberOfMedicine()
-                        , prescriptionList.get(i).getUserNationalCode(), resultMedicine);
+                List<Medicine>originalMedicineList=new ArrayList<>();
+                prescriptionRepository.updatePrescription(prescriptionId,resultMedicine.size());
+                originalMedicineList = prescriptionRepository.getMedicineForEachPrescription(prescriptionId);
+                for (int j = 0; j < originalMedicineList.size(); j++) {
+                    boolean temp=false;
+                    for (int k = 0; k <medicineList.size() ; k++) {
+                        if(originalMedicineList.get(j).getName().equals(medicineList.get(k).getName())) {
+                            temp = true;
+                            break;
+                        }
+                    }
+                    if(!temp){
+                        prescriptionRepository.deleteAMedicineFromPrescription(prescriptionId,originalMedicineList.get(j).getName());
+                }
+                }
             }
         }
     }
